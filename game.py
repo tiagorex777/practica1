@@ -33,7 +33,8 @@ for i in range(max_attempts):
  guessed_letters.append(letter)
 
  # Verificar si la letra está en la palabra secreta
- if letter in secret_word:
+ # corrijo con un and que si no se introduce una letra es un error
+ if letter in secret_word and letter != "" : 
     print("¡Bien hecho! La letra está en la palabra.")
  else:
     print("Lo siento, la letra no está en la palabra.")
@@ -48,7 +49,7 @@ for i in range(max_attempts):
 
  word_displayed = "".join(letters)
  print(f"Palabra: {word_displayed}")
- 
+
  # Verificar si se ha adivinado la palabra completa
  if word_displayed == secret_word:
      print(f"¡Felicidades! Has adivinado la palabra secreta: {secret_word}")
