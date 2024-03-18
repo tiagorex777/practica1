@@ -58,15 +58,18 @@ while tries < 10 :
     continue
 
  # Agregar la letra a la lista de letras adivinadas
- guessed_letters.append(letter)
+ # corrijo si el usuario no pone nada
+ if letter != "":
+   guessed_letters.append(letter)
 
  # Verificar si la letra está en la palabra secreta
- # corrijo con un and que si no se introduce una letra es un error
- if letter in secret_word and letter != "" : 
-    print("¡Bien hecho! La letra está en la palabra.")
+   if letter in secret_word:
+      print("¡Bien hecho! La letra está en la palabra.")
+   else:
+      print("Lo siento, la letra no está en la palabra.")
+      tries += 1
  else:
-    print("Lo siento, la letra no está en la palabra.")
-    tries += 1
+    print("caracter invalido, ingrese otro")
 
  # Mostrar la palabra parcialmente adivinada
  letters = []
