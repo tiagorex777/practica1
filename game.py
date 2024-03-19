@@ -18,6 +18,14 @@ print("""En que dificultad desea jugar
 difficulty = int(input("Ingrese dificultad: "))
 
 
+
+#lista para almacenar las letras adivinadas
+guessed_letters = []
+
+while difficulty < 1 or difficulty > 3:
+   print("Dificultad no existente, intente denuevo")
+   difficulty = int(input("Ingrese dificultad: "))
+
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 
 ## diferentes dificultades
@@ -26,21 +34,21 @@ word_displayed = ""
 if difficulty == 1:
    for element in secret_word:
      if element in "aeiou":
-          word_displayed += element
-     else :
-        word_displayed += "_"
+       guessed_letters.append(element) ## guardo las letras dadas por el programa
+       word_displayed += element
+     else:
+       word_displayed += "_"
 else:
    ## medio
-   if difficulty == 2:
-        word_displayed += secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1]
-   else:
+    if difficulty == 2:
+      guessed_letters.append(secret_word[0])           
+      guessed_letters.append(secret_word[-1])
+      word_displayed += secret_word[0] + "_" * (len(secret_word) - 2) + secret_word[-1]
+    else: 
       ##dificil
-     if difficulty == 3:
-         word_displayed = "_" * len(secret_word)
-        
-
-# Lista para almacenar las letras adivinadas
-guessed_letters = [word_displayed]
+      if difficulty == 3:
+          word_displayed = "_" * len(secret_word)
+ 
 
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
@@ -54,8 +62,8 @@ while tries < 10 :
 
  # Verificar si la letra ya ha sido adivinada
  if letter in guessed_letters:
-    print("Ya has intentado con esa letra. Intenta con otra.")
-    continue
+   print("Ya has intentado con esa letra. Intenta con otra.")
+   continue
 
  # Agregar la letra a la lista de letras adivinadas
  # corrijo si el usuario no pone nada
