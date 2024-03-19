@@ -62,7 +62,11 @@ while tries < 10 :
 
  # Verificar si la letra ya ha sido adivinada
  if letter in guessed_letters:
-   print("Ya has intentado con esa letra. Intenta con otra.")
+   if letter in secret_word:
+    print("Ya has intentado con esa letra, es correcta. Intenta con otra.")
+   else:
+     print("ya has intentado con este letras, es incorrecta. Intenta con otra")
+     tries += 1
    continue
 
  # Agregar la letra a la lista de letras adivinadas
